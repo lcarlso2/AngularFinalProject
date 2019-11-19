@@ -1,0 +1,9 @@
+.card-header{
+    text-align: center;
+}
+
+img {
+    height: 173px;
+    width: 100%;
+    max-width: 100%;
+}
