@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { PCService } from 'src/app/services/pc.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-pc-part-edit',
@@ -25,7 +26,7 @@ export class EditPcPartComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.partForm = this.formBuilder.group({
       id: new FormControl(
-        {value: this.partToEdit.id, disabled : true},
+        { value: this.partToEdit.id, disabled: true },
         [Validators.required],
       ),
       brand: new FormControl(
@@ -41,7 +42,7 @@ export class EditPcPartComponent implements OnInit, OnChanges {
         [Validators.required]
       ),
       partType: new FormControl(
-        {value: Part.convertEnumTypeToString(this.partToEdit.type), disabled : true},
+        { value: Part.convertEnumTypeToString(this.partToEdit.type), disabled: true },
         [Validators.required]
       )
     });
@@ -57,12 +58,17 @@ export class EditPcPartComponent implements OnInit, OnChanges {
       this.fields.brand.value,
       this.fields.model.value,
       this.fields.description.value);
-    this.service.createPart(part);
+    console.log("In update---" + part)
+    this.service.editPart(part).subscribe();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.part){
-      this.partToEdit = changes.part.currentValue;
+    if (this.partForm != null) {
+      this.fields.id.setValue(this.partToEdit.id);
+      this.fields.brand.setValue(this.partToEdit.brand);
+      this.fields.model.setValue(this.partToEdit.model);
+      this.fields.description.setValue(this.partToEdit.description);
+      this.fields.partType.setValue(Part.convertEnumTypeToString(this.partToEdit.type));
     }
   }
 

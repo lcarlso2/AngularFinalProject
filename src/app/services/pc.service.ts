@@ -32,6 +32,10 @@ export class PCService {
         return this.http.post(this.urlForParts, part).pipe(tap(data => console.log('Part Added')), catchError(this.handleError));
     }
 
+    editPart(part: Part){
+        return this.http.patch(this.urlForParts, part);
+    }
+
     checkIfIdExistsForParts(id: number){
         return timer(5).pipe(switchMap(() => {
             return this.http.get<any>(this.urlForParts + `/${id}`).toPromise().then();
