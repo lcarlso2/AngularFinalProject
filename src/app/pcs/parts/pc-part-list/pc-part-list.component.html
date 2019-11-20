@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <div class="row">
                         <label for="partType">Part Type</label>
-                        <select class="btn ml-3 mr-7 text-center" [(ngModel)]="selectedPartType" (change)="selectedPartTypeChanged()">
+                        <select class="btn btn-outline-secondary ml-3 mr-7 text-center" [(ngModel)]="selectedPartType" (change)="selectedPartTypeChanged()">
                             <option value="CPU">CPU</option>
                             <option value="CPUCooler">CPU Cooler</option>
                             <option value="GPU">GPU</option>
@@ -15,7 +15,7 @@
                             <option value="case">Case</option>
                             <option value="powerSupply">Power Supply</option>
                         </select>
-                        <button class="float-right btn-primary ml-3 mr-7">Create Part</button>
+                        <button class="float-right btn btn-outline-secondary ml-3 mr-7">Create Part</button>
                     </div>
                 </div>
                 <div class="card-body">
