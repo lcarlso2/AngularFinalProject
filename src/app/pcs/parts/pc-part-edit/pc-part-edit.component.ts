@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Part } from 'src/app/part-model/pc-part.model';
 import { ValidationErrors, AbstractControl, Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
@@ -17,16 +17,19 @@ export class EditPcPartComponent implements OnInit {
 
   partForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private service: PCService) {
+  @Input() partToEditID: number;
 
+  partToEdit: Part;
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private service: PCService) {
+  
   }
 
   ngOnInit() {
     this.partForm = this.formBuilder.group({
       id: new FormControl(
-        '',
+        {value: '', disabled : true},
         [Validators.required],
-        [this.idValidator.bind(this)]
       ),
       brand: new FormControl(
         '',
@@ -41,10 +44,21 @@ export class EditPcPartComponent implements OnInit {
         [Validators.required]
       ),
       partType: new FormControl(
-        '',
+        {value: '', disabled : true},
         [Validators.required]
       )
-    })
+    });
+    this.service.getPartByID(this.partToEditID).subscribe(part => {
+      this.partToEdit = part;
+      this.fields.id.setValue(this.partToEdit.id);
+      this.fields.brand.setValue(this.partToEdit.brand);
+      this.fields.model.setValue(this.partToEdit.model);
+      this.fields.description.setValue(this.partToEdit.description);
+      this.fields.partType.setValue(Part.convertEnumTypeToString(this.partToEdit.type));
+    }
+    );
+
+
   }
 
   get fields() {
@@ -58,16 +72,6 @@ export class EditPcPartComponent implements OnInit {
       this.fields.model.value,
       this.fields.description.value);
     this.service.createPart(part);
-  }
-
-  idValidator(ctrl: AbstractControl): Promise<ValidationErrors | boolean> | Observable<ValidationErrors | boolean> {
-    return this.service.checkIfIdExistsForParts(ctrl.value).pipe(map(isTaken => (isTaken ? {idTaken : true} : null )),
-    catchError(() => of(false))
-    );
-  }
-
-  partChanged() {
-    console.log(this.selectedPart);
   }
 
 

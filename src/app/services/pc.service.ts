@@ -24,6 +24,10 @@ export class PCService {
         return this.http.get<Part[]>(this.urlForParts).pipe(tap(data => console.log("Parts fetched")), catchError(this.handleError));
     }
 
+    getPartByID(id : number): Observable<Part>{
+        return this.http.get<Part>(this.urlForParts + `/${id}`).pipe(tap(data => console.log(`${id} found`)), catchError(this.handleError));
+    }
+
     createPart(part: Part) {
         return this.http.post(this.urlForParts, part).pipe(tap(data => console.log('Part Added')), catchError(this.handleError));
     }

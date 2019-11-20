@@ -19,8 +19,11 @@ export class ListPcPartComponent implements OnInit {
   errorMessage: string;
 
   selectedPart: Part;
-  
-  constructor(private service: PCService, private router: Router) { 
+
+  createPart: boolean;
+
+  constructor(private service: PCService, private router: Router) {
+    this.createPart = false;
     this.parts = [];
   }
 
@@ -28,16 +31,22 @@ export class ListPcPartComponent implements OnInit {
     this.service.getParts().subscribe(parts => {
       this.parts = parts;
     },
-    error => this.errorMessage = error
+      error => this.errorMessage = error
     );
   }
 
-  onChildSelectedPartChanged(part: Part){
+  onChildSelectedPartChanged(part: Part) {
     this.selectedPart = part;
   }
 
   selectedPartTypeChanged() {
     this.selectedPartTypeNumber = Part.convertStringToEnumType(this.selectedPartType);
+   
+  }
+
+  createPartClicked() {
+    this.selectedPart = null;
+    this.createPart = true;
   }
 
 }

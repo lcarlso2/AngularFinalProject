@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PCService } from 'src/app/services/pc.service';
@@ -17,6 +17,8 @@ export class CreatePcPartComponent implements OnInit {
   selectedPart: string;
 
   partForm: FormGroup;
+
+  @Output() partCreated: boolean;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private service: PCService) {
 
@@ -59,6 +61,7 @@ export class CreatePcPartComponent implements OnInit {
       this.fields.model.value,
       this.fields.description.value);
     this.service.createPart(part);
+    this.partCreated = true;
   }
 
   idValidator(ctrl: AbstractControl): Promise<ValidationErrors | boolean> | Observable<ValidationErrors | boolean> {

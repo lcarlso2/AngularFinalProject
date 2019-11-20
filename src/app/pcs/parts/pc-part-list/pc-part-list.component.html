@@ -5,7 +5,8 @@
                 <div class="card-header">
                     <div class="row">
                         <label for="partType">Part Type</label>
-                        <select class="btn btn-outline-secondary ml-3 mr-7 text-center" [(ngModel)]="selectedPartType" (change)="selectedPartTypeChanged()">
+                        <select class="btn btn-outline-secondary ml-3 mr-7 text-center" [(ngModel)]="selectedPartType"
+                            (change)="selectedPartTypeChanged()">
                             <option value="CPU">CPU</option>
                             <option value="CPUCooler">CPU Cooler</option>
                             <option value="GPU">GPU</option>
@@ -15,7 +16,7 @@
                             <option value="case">Case</option>
                             <option value="powerSupply">Power Supply</option>
                         </select>
-                        <button class="float-right btn btn-outline-secondary ml-3 mr-7">Create Part</button>
+                        <button class="float-right btn btn-outline-secondary ml-3 mr-7" (click)="createPartClicked()">Create Part</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,9 +30,8 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card">
-                EDIT AREA
-            </div>
+            <app-pc-part-edit [partToEditID]="selectedPart.id" *ngIf="selectedPart != null"></app-pc-part-edit>
+            <app-pc-part-create *ngIf="createPart && selectedPart === null"></app-pc-part-create>
         </div>
     </div>
 </div>
