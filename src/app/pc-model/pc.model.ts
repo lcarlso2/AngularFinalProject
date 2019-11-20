@@ -1,4 +1,4 @@
-import { Part } from '../parts/pc-part.model';
+import { Part } from '../part-model/pc-part.model';
 
 
 export class PC{

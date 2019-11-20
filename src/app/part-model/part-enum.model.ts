@@ -8,3 +8,4 @@ export enum PART_TYPE {
     PowerSupply,
     PCCase
 }
+

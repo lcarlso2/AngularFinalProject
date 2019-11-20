@@ -1,0 +1,96 @@
+<div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Edit a part to use in your build!</h1>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="partForm" (ngSubmit)="onSubmit()">
+                    <div class="row ">
+                        <div class="col-2 offset-md-5">
+                            <div class="form-group">
+                                <label for="id">Part ID</label>
+                                <input type="text" formControlName="id" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.id.errors }" />
+                                <div *ngIf="fields.id.invalid && fields.id.touched">
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.id.errors.required">ID is required
+                                    </small>
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.id.errors.idTaken">ID is Taken
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 offset-md-4">
+                            <div class="form-group">
+                                <label for="partType">Part Type</label>
+                                <select class="col-3 btn ml-3 mr-7" formControlName="partType" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.partType.errors}">
+                                    <option value="CPU">CPU</option>
+                                    <option value="CPUCooler">CPU Cooler</option>
+                                    <option value="GPU">GPU</option>
+                                    <option value="memory">Memory</option>
+                                    <option value="harddrive">Hard Drive</option>
+                                    <option value="motherboard">Motherboard</option>
+                                    <option value="case">Case</option>
+                                    <option value="powerSupply">Power Supply</option>
+                                </select>
+                                <div *ngIf="fields.partType.invalid && fields.partType.touched">
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.partType.errors.required">Part
+                                        Type is required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-2 offset-md-4">
+                            <div class="form-group">
+                                <label for="brand">Part Brand</label>
+                                <input type="text" formControlName="brand" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.brand.errors }" />
+                                <div *ngIf="fields.brand.invalid && fields.brand.touched">
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.brand.errors.required">Brand is
+                                        required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="model">Part Model</label>
+                                <input type="text" formControlName="model" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.model.errors }" />
+                                <div *ngIf="fields.model.invalid && fields.model.touched">
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.model.errors.required">Model is
+                                        required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 offset-md-3">
+                            <div class="form-group">
+                                <label for="description">Part Description</label>
+                                <input type="text" formControlName="description" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.description.errors }" />
+                                <div *ngIf="fields.description.invalid && fields.description.touched">
+                                    <small id="helpBlock" class="form-text"
+                                        *ngIf="fields.description.errors.required">description is
+                                        required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!partForm.valid">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

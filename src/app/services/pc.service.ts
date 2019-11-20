@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
-import { Observable, throwError, ObservedValueOf } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { PC } from '../pc/pc.model';
-import { Part } from '../parts/pc-part.model';
+import { Observable, throwError, ObservedValueOf, timer } from 'rxjs';
+import { catchError, tap, switchMap} from 'rxjs/operators';
+import { PC } from '../pc-model/pc.model';
+import { Part } from '../part-model/pc-part.model';
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +20,19 @@ export class PCService {
             tap(data => console.log("PCS fetched")), catchError(this.handleError));
     }
 
+    getParts(): Observable<Part[]>{
+        return this.http.get<Part[]>(this.urlForParts).pipe(tap(data => console.log("Parts fetched")), catchError(this.handleError));
+    }
+
     createPart(part: Part) {
         return this.http.post(this.urlForParts, part).pipe(tap(data => console.log('Part Added')), catchError(this.handleError));
+    }
+
+    checkIfIdExistsForParts(id: number){
+        return timer(5).pipe(switchMap(() => {
+            return this.http.get<any>(this.urlForParts + `/${id}`).toPromise().then();
+        })
+        );
     }
 
     handleError(error: HttpErrorResponse) {
