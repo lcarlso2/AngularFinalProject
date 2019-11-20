@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Part } from 'src/app/part-model/pc-part.model';
 import { ValidationErrors, AbstractControl, Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
@@ -11,54 +11,40 @@ import { PCService } from 'src/app/services/pc.service';
   templateUrl: './pc-part-edit.component.html',
   styleUrls: ['./pc-part-edit.component.css']
 })
-export class EditPcPartComponent implements OnInit {
+export class EditPcPartComponent implements OnInit, OnChanges {
 
   selectedPart: string;
 
   partForm: FormGroup;
 
-  @Input() partToEditID: number;
-
-  partToEdit: Part;
+  @Input() partToEdit: Part;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private service: PCService) {
-  
   }
 
   ngOnInit() {
     this.partForm = this.formBuilder.group({
       id: new FormControl(
-        {value: '', disabled : true},
+        {value: this.partToEdit.id, disabled : true},
         [Validators.required],
       ),
       brand: new FormControl(
-        '',
+        this.partToEdit.brand,
         [Validators.required]
       ),
       model: new FormControl(
-        '',
+        this.partToEdit.model,
         [Validators.required]
       ),
       description: new FormControl(
-        '',
+        this.partToEdit.description,
         [Validators.required]
       ),
       partType: new FormControl(
-        {value: '', disabled : true},
+        {value: Part.convertEnumTypeToString(this.partToEdit.type), disabled : true},
         [Validators.required]
       )
     });
-    this.service.getPartByID(this.partToEditID).subscribe(part => {
-      this.partToEdit = part;
-      this.fields.id.setValue(this.partToEdit.id);
-      this.fields.brand.setValue(this.partToEdit.brand);
-      this.fields.model.setValue(this.partToEdit.model);
-      this.fields.description.setValue(this.partToEdit.description);
-      this.fields.partType.setValue(Part.convertEnumTypeToString(this.partToEdit.type));
-    }
-    );
-
-
   }
 
   get fields() {
@@ -73,6 +59,13 @@ export class EditPcPartComponent implements OnInit {
       this.fields.description.value);
     this.service.createPart(part);
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.part){
+      this.partToEdit = changes.part.currentValue;
+    }
+  }
+
 
 
 }
