@@ -1,5 +1,8 @@
 <li class="list-group-item" [ngClass]="{'active': selectedPart === part}" (click)="listClick()">
-    {{part.model}} from {{part.brand}}-- {{part.description}}
-
-<button>Delete</button>
+    <div class="col-6">
+        {{part.model}} from {{part.brand}}-- {{part.description}}
+    </div>
+    <div class="col-6">
+        <button class="btn btn-outline-danger float-right">Delete</button>
+    </div>
 </li>
