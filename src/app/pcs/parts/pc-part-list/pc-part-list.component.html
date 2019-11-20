@@ -2,10 +2,25 @@
     <div class="row">
         <div class="col-6">
             <div class="card">
-                <div class="card-header">CPUs</div>
+                <div class="card-header">
+                    <div class="row">
+                        <label for="partType">Part Type</label>
+                        <select class="btn ml-3 mr-7 text-center" [(ngModel)]="selectedPartType" (change)="selectedPartTypeChanged()">
+                            <option value="CPU">CPU</option>
+                            <option value="CPUCooler">CPU Cooler</option>
+                            <option value="GPU">GPU</option>
+                            <option value="memory">Memory</option>
+                            <option value="harddrive">Hard Drive</option>
+                            <option value="motherboard">Motherboard</option>
+                            <option value="case">Case</option>
+                            <option value="powerSupply">Power Supply</option>
+                        </select>
+                        <button class="float-right btn-primary ml-3 mr-7">Create Part</button>
+                    </div>
+                </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'0' ">
+                        <ng-container *ngFor="let part of parts | partTypePipe:selectedPartTypeNumber ">
                             <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
                                 (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
                         </ng-container>
@@ -14,108 +29,6 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card">
-                <div class="card-header">CPU Coolers</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'1' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">GPUs</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'2' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">Hard Drives</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'3' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">Memory</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'4' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">Motherboards</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'5' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">Power Supplys</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'6' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">Cases</div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <ng-container *ngFor="let part of parts | partTypePipe:'7' ">
-                            <app-pc-part-item [part]="part" [selectedPart]="selectedPart"
-                                (selectedItemChanged)="onChildSelectedPartChanged($event)"></app-pc-part-item>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
             <div class="card">
                 EDIT AREA
             </div>
