@@ -1,191 +1,191 @@
 {
-    "pcs": [
-        {
-            "id": 1,
-            "name": "My first build",
-            "gpu": {
-                "id": 2,
-                "type": 2,
-                "brand": "MSI",
-                "model": "1050",
-                "description": "4GB video ram"
-            },
-            "cpu": {
-                "id": 3,
-                "type": 0,
-                "brand": "Intel",
-                "model": "i7-9700k",
-                "description": "2.6 GHz 8-Core processor"
-            },
-            "cpuCooler": {
-                "id": 4,
-                "type": 1,
-                "brand": "Cooler Master",
-                "model": "Hyper 212",
-                "description": "The RGB Black edition"
-            },
-            "mobo": {
-                "id": 5,
-                "type": 5,
-                "brand": "MSI",
-                "model": "Z390",
-                "description": "ATX LGA1151 Motherboard"
-            },
-            "memory": {
-                "id": 6,
-                "type": 4,
-                "brand": "Corsair",
-                "model": "Vengeance LPX",
-                "description": "16GB (2 x 8GB) DDR4-3600"
-            },
-            "hardDrive": {
-                "id": 7,
-                "type": 3,
-                "brand": "Wester Digital",
-                "model": "Caviar Blue",
-                "description": "1TB 7200 RPM"
-            },
-            "pcCase": {
-                "id": 8,
-                "type": 7,
-                "brand": "Phanteks",
-                "model": "P300",
-                "description": "A mid ATX tower case"
-            },
-            "psu": {
-                "id": 1,
-                "type": 6,
-                "brand": "Corsair",
-                "model": "TXM",
-                "description": "Gold 550 W 80+"
-            },
-            "description": "This is my first build."
-        },
-        {
-            "id": 2,
-            "name": "My Second build",
-            "gpu": {
-                "id": 1,
-                "type": 2,
-                "brand": "MSI",
-                "model": "1050",
-                "description": "4GB video ram"
-            },
-            "cpu": {
-                "id": 1,
-                "type": 0,
-                "brand": "Intel",
-                "model": "i7-9700k",
-                "description": "2.6 GHz 8-Core processor"
-            },
-            "cpuCooler": {
-                "id": 1,
-                "type": 1,
-                "brand": "Cooler Master",
-                "model": "Hyper 212",
-                "description": "The RGB Black edition"
-            },
-            "mobo": {
-                "id": 1,
-                "type": 5,
-                "brand": "MSI",
-                "model": "Z390",
-                "description": "ATX LGA1151 Motherboard"
-            },
-            "memory": {
-                "id": 1,
-                "type": 4,
-                "brand": "Corsair",
-                "model": "Vengeance LPX",
-                "description": "16GB (2 x 8GB) DDR4-3600"
-            },
-            "hardDrive": {
-                "id": 1,
-                "type": 3,
-                "brand": "Wester Digital",
-                "model": "Caviar Blue",
-                "description": "1TB 7200 RPM"
-            },
-            "pcCase": {
-                "id": 1,
-                "type": 7,
-                "brand": "Phanteks",
-                "model": "P300",
-                "description": "A mid ATX tower case"
-            },
-            "psu": {
-                "id": 1,
-                "type": 6,
-                "brand": "Corsair",
-                "model": "TXM",
-                "description": "Gold 550 W 80+"
-            },
-            "description": "This is my second build."
-        }
-    ],
-    "parts": [
-        {
-            "id": 1,
-            "type": 6,
-            "brand": "Corsair",
-            "model": "TXM",
-            "description": "Gold 550 W 80+"
-        },
-        {
-            "id": 2,
-            "type": 2,
-            "brand": "MSI",
-            "model": "1050",
-            "description": "4GB video ram"
-        },
-        {
-            "id": 3,
-            "type": 0,
-            "brand": "Intel",
-            "model": "i7-9700k",
-            "description": "2.6 GHz 8-Core processor"
-        },
-        {
-            "id": 4,
-            "type": 1,
-            "brand": "Cooler Master",
-            "model": "Hyper 212",
-            "description": "The RGB Black edition"
-        },
-        {
-            "id": 5,
-            "type": 5,
-            "brand": "MSI",
-            "model": "Z390",
-            "description": "ATX LGA1151 Motherboard"
-        },
-        {
-            "id": 6,
-            "type": 4,
-            "brand": "Corsair",
-            "model": "Vengeance LPX",
-            "description": "16GB (2 x 8GB) DDR4-3600"
-        },
-        {
-            "id": 7,
-            "type": 3,
-            "brand": "Wester Digital",
-            "model": "Caviar Blue",
-            "description": "1TB 7200 RPM"
-        },
-        {
-            "id": 8,
-            "type": 7,
-            "brand": "Phanteks",
-            "model": "P300",
-            "description": "A mid ATX tower case"
-        },
-        {
-            "id": 9,
-            "type": 6,
-            "brand": "Corsair",
-            "model": "CX Series",
-            "description": "Bronze 750W ATX"
-        }
-    ]
+  "pcs": [
+    {
+      "id": 1,
+      "name": "My first build",
+      "gpu": {
+        "id": 2,
+        "type": 2,
+        "brand": "MSI",
+        "model": "1050",
+        "description": "4GB video ram"
+      },
+      "cpu": {
+        "id": 3,
+        "type": 0,
+        "brand": "Intel",
+        "model": "i7-9700k",
+        "description": "2.6 GHz 8-Core processor"
+      },
+      "cpuCooler": {
+        "id": 4,
+        "type": 1,
+        "brand": "Cooler Master",
+        "model": "Hyper 212",
+        "description": "The RGB Black edition"
+      },
+      "mobo": {
+        "id": 5,
+        "type": 5,
+        "brand": "MSI",
+        "model": "Z390",
+        "description": "ATX LGA1151 Motherboard"
+      },
+      "memory": {
+        "id": 6,
+        "type": 4,
+        "brand": "Corsair",
+        "model": "Vengeance LPX",
+        "description": "16GB (2 x 8GB) DDR4-3600"
+      },
+      "hardDrive": {
+        "id": 7,
+        "type": 3,
+        "brand": "Wester Digital",
+        "model": "Caviar Blue",
+        "description": "1TB 7200 RPM"
+      },
+      "pcCase": {
+        "id": 8,
+        "type": 7,
+        "brand": "Phanteks",
+        "model": "P300",
+        "description": "A mid ATX tower case"
+      },
+      "psu": {
+        "id": 1,
+        "type": 6,
+        "brand": "Corsair",
+        "model": "TXM",
+        "description": "Gold 550 W 80+"
+      },
+      "description": "This is my first build."
+    },
+    {
+      "id": 2,
+      "name": "My Second build",
+      "gpu": {
+        "id": 1,
+        "type": 2,
+        "brand": "MSI",
+        "model": "1050",
+        "description": "4GB video ram"
+      },
+      "cpu": {
+        "id": 1,
+        "type": 0,
+        "brand": "Intel",
+        "model": "i7-9700k",
+        "description": "2.6 GHz 8-Core processor"
+      },
+      "cpuCooler": {
+        "id": 1,
+        "type": 1,
+        "brand": "Cooler Master",
+        "model": "Hyper 212",
+        "description": "The RGB Black edition"
+      },
+      "mobo": {
+        "id": 1,
+        "type": 5,
+        "brand": "MSI",
+        "model": "Z390",
+        "description": "ATX LGA1151 Motherboard"
+      },
+      "memory": {
+        "id": 1,
+        "type": 4,
+        "brand": "Corsair",
+        "model": "Vengeance LPX",
+        "description": "16GB (2 x 8GB) DDR4-3600"
+      },
+      "hardDrive": {
+        "id": 1,
+        "type": 3,
+        "brand": "Wester Digital",
+        "model": "Caviar Blue",
+        "description": "1TB 7200 RPM"
+      },
+      "pcCase": {
+        "id": 1,
+        "type": 7,
+        "brand": "Phanteks",
+        "model": "P300",
+        "description": "A mid ATX tower case"
+      },
+      "psu": {
+        "id": 1,
+        "type": 6,
+        "brand": "Corsair",
+        "model": "TXM",
+        "description": "Gold 550 W 80+"
+      },
+      "description": "This is my second build."
+    }
+  ],
+  "parts": [
+    {
+      "id": 1,
+      "type": 6,
+      "brand": "Corsair",
+      "model": "TXM",
+      "description": "Gold 550 W 80+"
+    },
+    {
+      "id": 2,
+      "type": 2,
+      "brand": "MSI",
+      "model": "1050",
+      "description": "4GB video ram"
+    },
+    {
+      "id": 3,
+      "type": 0,
+      "brand": "Intel",
+      "model": "i7-9700k",
+      "description": "2.6 GHz 8-Core processor"
+    },
+    {
+      "id": 4,
+      "type": 1,
+      "brand": "Cooler Master",
+      "model": "Hyper 212",
+      "description": "The RGB Black edition"
+    },
+    {
+      "id": 5,
+      "type": 5,
+      "brand": "MSI",
+      "model": "Z390",
+      "description": "ATX LGA1151 Motherboard"
+    },
+    {
+      "id": 6,
+      "type": 4,
+      "brand": "Corsair",
+      "model": "Vengeance LPX",
+      "description": "16GB (2 x 8GB) DDR4-3600"
+    },
+    {
+      "id": 7,
+      "type": 3,
+      "brand": "Wester Digital",
+      "model": "Caviar Blue",
+      "description": "1TB 7200 RPM"
+    },
+    {
+      "id": 8,
+      "type": 7,
+      "brand": "Phanteks",
+      "model": "P300",
+      "description": "A mid ATX tower case"
+    },
+    {
+        "id": 9,
+        "type": 6,
+        "brand": "Corsair",
+        "model": "CX Series",
+        "description": "Bronze 750W ATX"
+    }
+  ]
 }

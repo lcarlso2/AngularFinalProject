@@ -38,6 +38,7 @@ import { PcPartItemComponent } from './pcs/parts/pc-part-item/pc-part-item.compo
       {path: 'home', component: HomeComponent},
       {path: 'builds', component: PcBuildComponent},
       {path: 'create', component: CreatePcPartComponent},
+      {path: 'parts/:type', component: ListPcPartComponent},
       {path: 'parts', component: ListPcPartComponent},
       {path : '', redirectTo:'home', pathMatch:'full'},
       {path : '**', redirectTo:'home', pathMatch:'full'}

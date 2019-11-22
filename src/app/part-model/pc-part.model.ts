@@ -6,7 +6,7 @@ export class Part {
     static convertStringToEnumType(type:string): number {
         if (type === 'CPU'){
             return PART_TYPE.CPU;
-        } else if (type === 'CPUCooler') {
+        } else if (type === 'CPUcooler') {
             return PART_TYPE.CPUCooler;
         } else if (type === 'GPU') {
             return PART_TYPE.GPU;
@@ -27,19 +27,19 @@ export class Part {
         if (type === PART_TYPE.CPU){
             return "CPU";
         } else if (type === PART_TYPE.CPUCooler) {
-            return "CPU Cooler";
+            return "CPUcooler";
         } else if (type === PART_TYPE.GPU) {
             return "GPU";
         } else if (type === PART_TYPE.Memory) {
-            return "Memory";
+            return "memory";
         } else if (type === PART_TYPE.HardDrive) {
-            return "Hard Drive";
+            return "harddrive";
         } else if (type === PART_TYPE.Motherboard) {
-            return "Motherboard";
+            return "motherboard";
         } else if (type === PART_TYPE.PCCase) {
-            return "Case";
+            return "case";
         } else {
-            return "Power Supply";
+            return "powersupply";
         }
     }
 }

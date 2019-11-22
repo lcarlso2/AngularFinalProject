@@ -1,8 +1,18 @@
-<li class="list-group-item" [ngClass]="{'active': selectedPart === part}" (click)="listClick()">
+<div class="row">
     <div class="col-6">
-        {{part.model}} from {{part.brand}}-- {{part.description}}
+        <li class="list-group-item" [ngClass]="{'active': selectedPart === part}" (click)="listClick()">
+            {{part.model}} from {{part.brand}}-- {{part.description}}
+        </li>
     </div>
-    <div class="col-6">
-        <button class="btn btn-outline-danger float-right">Delete</button>
+    <div class="col">
+        <div class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-outline-danger" *ngIf="showDelete" (click)="clickedDelete()">Delete</button>
+                <button class="btn btn-outline-danger" *ngIf="showConfirm"
+                    (click)="clickedConfirmDelete()">Confirm</button>
+                <button class="btn btn-outline-primary" *ngIf="showConfirm"
+                    (click)="clickedCancelDelete()">Cancel</button>
+            </div>
+        </div>
     </div>
-</li>
+</div>

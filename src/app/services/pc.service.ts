@@ -33,7 +33,11 @@ export class PCService {
     }
 
     editPart(part: Part){
-        return this.http.patch(this.urlForParts, part);
+        return this.http.patch(this.urlForParts + `/${part.id}`, part).pipe(tap(data => console.log("Part updated")), catchError(this.handleError));
+    }
+
+    deletePart(part: Part){
+        return this.http.delete<void>(this.urlForParts + `/${part.id}`).pipe(tap(data => console.log(`Part with id ${part.id} deleted`)), catchError(this.handleError));
     }
 
     checkIfIdExistsForParts(id: number){

@@ -24,6 +24,28 @@ export class EditPcPartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.initPartForm();
+  }
+
+  get fields() {
+    return this.partForm.controls;
+  }
+
+  onSubmit() {
+    var part = new Part(this.fields.id.value,
+      Part.convertStringToEnumType(this.fields.partType.value),
+      this.fields.brand.value,
+      this.fields.model.value,
+      this.fields.description.value);
+    this.service.editPart(part).subscribe();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.partToEdit = changes.partToEdit.currentValue;
+    this.initPartForm();
+  }
+
+  initPartForm() {
     this.partForm = this.formBuilder.group({
       id: new FormControl(
         { value: this.partToEdit.id, disabled: true },
@@ -47,31 +69,6 @@ export class EditPcPartComponent implements OnInit, OnChanges {
       )
     });
   }
-
-  get fields() {
-    return this.partForm.controls;
-  }
-
-  onSubmit() {
-    var part = new Part(this.fields.id.value,
-      Part.convertStringToEnumType(this.fields.partType.value),
-      this.fields.brand.value,
-      this.fields.model.value,
-      this.fields.description.value);
-    console.log("In update---" + part)
-    this.service.editPart(part).subscribe();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.partForm != null) {
-      this.fields.id.setValue(this.partToEdit.id);
-      this.fields.brand.setValue(this.partToEdit.brand);
-      this.fields.model.setValue(this.partToEdit.model);
-      this.fields.description.setValue(this.partToEdit.description);
-      this.fields.partType.setValue(Part.convertEnumTypeToString(this.partToEdit.type));
-    }
-  }
-
 
 
 }

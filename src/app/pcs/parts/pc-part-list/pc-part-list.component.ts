@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChange, SimpleChanges, DoCheck } from '@angular/core';
 import { Part } from 'src/app/part-model/pc-part.model';
 import { PCService } from 'src/app/services/pc.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pc-part-list',
@@ -22,12 +22,14 @@ export class ListPcPartComponent implements OnInit {
   createPart: boolean;
 
 
-  constructor(private service: PCService, private router: Router) {
+  constructor(private service: PCService, private router: Router, private route: ActivatedRoute) {
     this.createPart = false;
     this.parts = [];
   }
 
   ngOnInit(): void {
+    this.selectedPartTypeNumber = +this.route.snapshot.paramMap.get('type');
+    this.selectedPartType = Part.convertEnumTypeToString(this.selectedPartTypeNumber)
     this.service.getParts().subscribe(parts => {
       this.parts = parts;
     },
@@ -37,11 +39,13 @@ export class ListPcPartComponent implements OnInit {
 
   onChildSelectedPartChanged(part: Part) {
     this.selectedPart = part;
-    console.log(this.selectedPart)
   }
 
   selectedPartTypeChanged() {
     this.selectedPartTypeNumber = Part.convertStringToEnumType(this.selectedPartType);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/parts', { type: this.selectedPartTypeNumber }]);
   }
 
   createPartClicked() {
@@ -52,6 +56,6 @@ export class ListPcPartComponent implements OnInit {
 
 
 
-  
+
 
 }
