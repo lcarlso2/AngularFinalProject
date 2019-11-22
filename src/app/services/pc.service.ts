@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { Observable, throwError, ObservedValueOf, timer } from 'rxjs';
-import { catchError, tap, switchMap} from 'rxjs/operators';
+import { catchError, tap, switchMap } from 'rxjs/operators';
 import { PC } from '../pc-model/pc.model';
 import { Part } from '../part-model/pc-part.model';
 
@@ -20,11 +20,11 @@ export class PCService {
             tap(data => console.log("PCS fetched")), catchError(this.handleError));
     }
 
-    getParts(): Observable<Part[]>{
+    getParts(): Observable<Part[]> {
         return this.http.get<Part[]>(this.urlForParts).pipe(tap(data => console.log("Parts fetched")), catchError(this.handleError));
     }
 
-    getPartByID(id : number): Observable<Part>{
+    getPartByID(id: number): Observable<Part> {
         return this.http.get<Part>(this.urlForParts + `/${id}`).pipe(tap(data => console.log(`${id} found`)), catchError(this.handleError));
     }
 
@@ -32,17 +32,28 @@ export class PCService {
         return this.http.post(this.urlForParts, part).pipe(tap(data => console.log('Part Added')), catchError(this.handleError));
     }
 
-    editPart(part: Part){
+    editPart(part: Part) {
         return this.http.patch(this.urlForParts + `/${part.id}`, part).pipe(tap(data => console.log("Part updated")), catchError(this.handleError));
     }
 
-    deletePart(part: Part){
+    deletePart(part: Part) {
         return this.http.delete<void>(this.urlForParts + `/${part.id}`).pipe(tap(data => console.log(`Part with id ${part.id} deleted`)), catchError(this.handleError));
     }
 
-    checkIfIdExistsForParts(id: number){
+    checkIfIdExistsForParts(id: number) {
         return timer(5).pipe(switchMap(() => {
             return this.http.get<any>(this.urlForParts + `/${id}`).toPromise().then();
+        })
+        );
+    }
+
+    createPC(pc: PC){
+        return this.http.post(this.urlForPCs, pc).pipe(tap(data => console.log('PC Created')), catchError(this.handleError));
+    }
+
+    checkIfIdExistsForPC(id: number) {
+        return timer(5).pipe(switchMap(() => {
+            return this.http.get<any>(this.urlForPCs + `/${id}`).toPromise().then();
         })
         );
     }

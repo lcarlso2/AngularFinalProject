@@ -141,7 +141,7 @@
     {
       "id": 3,
       "type": 0,
-      "brand": "Intel",
+      "brand": "IntelTest",
       "model": "i7-9700k",
       "description": "2.6 GHz 8-Core processor"
     },
@@ -181,11 +181,25 @@
       "description": "A mid ATX tower case"
     },
     {
-        "id": 9,
-        "type": 6,
-        "brand": "Corsair",
-        "model": "CX Series",
-        "description": "Bronze 750W ATX"
+      "id": 9,
+      "type": 6,
+      "brand": "Corsair",
+      "model": "CX Series",
+      "description": "Bronze 750W ATX"
+    },
+    {
+      "id": 10,
+      "type": 0,
+      "brand": "Ryzen",
+      "model": "X600",
+      "description": "Thread Ripper"
+    },
+    {
+      "id": 11,
+      "type": 0,
+      "brand": "Intel",
+      "model": "i5-9700F",
+      "description": "6-Core"
     }
   ]
 }

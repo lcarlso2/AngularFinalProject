@@ -12,7 +12,7 @@ import { catchError, map } from 'rxjs/operators';
   templateUrl: './pc-part-create.component.html',
   styleUrls: ['./pc-part-create.component.css']
 })
-export class CreatePcPartComponent implements OnInit {
+export class PCPartCreateComponent implements OnInit {
 
   selectedPart: string;
 
@@ -55,23 +55,26 @@ export class CreatePcPartComponent implements OnInit {
   }
 
   onSubmit() {
-    var part = new Part(this.fields.id.value,
+    var part = new Part(+this.fields.id.value,
       Part.convertStringToEnumType(this.fields.partType.value),
       this.fields.brand.value,
       this.fields.model.value,
       this.fields.description.value);
-    this.service.createPart(part);
+    this.service.createPart(part).subscribe(
+      () => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/parts', { type: part.type }]);
+      }
+    );
     this.partCreated = true;
   }
 
   idValidator(ctrl: AbstractControl): Promise<ValidationErrors | boolean> | Observable<ValidationErrors | boolean> {
-    return this.service.checkIfIdExistsForParts(ctrl.value).pipe(map(isTaken => (isTaken ? {idTaken : true} : null )),
-    catchError(() => of(false))
+    return this.service.checkIfIdExistsForParts(ctrl.value).pipe(map(isTaken => (isTaken ? { idTaken: true } : null)),
+      catchError(() => of(false))
     );
   }
 
-  partChanged() {
-    console.log(this.selectedPart);
-  }
 
 }

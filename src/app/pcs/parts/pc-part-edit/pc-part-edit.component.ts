@@ -12,7 +12,7 @@ import { isNullOrUndefined } from 'util';
   templateUrl: './pc-part-edit.component.html',
   styleUrls: ['./pc-part-edit.component.css']
 })
-export class EditPcPartComponent implements OnInit, OnChanges {
+export class PCPartEditComponent implements OnInit, OnChanges {
 
   selectedPart: string;
 
@@ -32,12 +32,18 @@ export class EditPcPartComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    var part = new Part(this.fields.id.value,
+    var part = new Part(+this.fields.id.value,
       Part.convertStringToEnumType(this.fields.partType.value),
       this.fields.brand.value,
       this.fields.model.value,
       this.fields.description.value);
-    this.service.editPart(part).subscribe();
+    this.service.editPart(part).subscribe(
+      () => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/parts', {type : part.type}]);
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {

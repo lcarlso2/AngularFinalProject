@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Your Builds!</h1>
+                        </div>
+                        <div class="col">
+                            <button class="float-right btn btn-outline-primary" (click)='createPCClicked()'>Create PC</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <ng-container *ngFor="let pc of pcs">
+                            <app-pc-build-item [pc]="pc" [selectedPC]="selectedPC"
+                                (selectedItemChanged)="onChildSelectedPCChanged($event)"></app-pc-build-item>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+                <app-pc-build-edit [pcToEdit]="selectedPC" *ngIf="selectedPC != null"></app-pc-build-edit>
+                <app-pc-build-create *ngIf="createPC && selectedPC === null"></app-pc-build-create>
+        </div>
+    </div>
+</div>

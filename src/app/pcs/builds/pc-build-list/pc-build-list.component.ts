@@ -5,15 +5,19 @@ import { Part } from 'src/app/part-model/pc-part.model';
 
 
 @Component({
-  selector: 'app-pc-build',
-  templateUrl: './pc-build.component.html',
-  styleUrls: ['./pc-build.component.css']
+  selector: 'app-pc-build-list',
+  templateUrl: './pc-build-list.component.html',
+  styleUrls: ['./pc-build-list.component.css']
 })
-export class PcBuildComponent implements OnInit {
+export class PCBuildListComponent implements OnInit {
 
   pcs: PC[]
   
   errorMessage: string;
+
+  selectedPC: PC;
+
+  createPC: boolean;
   
   constructor(private service: PCService) {
   }
@@ -24,6 +28,16 @@ export class PcBuildComponent implements OnInit {
     },
       error => this.errorMessage = error
     );
+  }
+
+  
+  onChildSelectedPCChanged(pc: PC) {
+    this.selectedPC = pc;
+  }
+
+  createPCClicked() {
+    this.selectedPC = null;
+    this.createPC = true;
   }
 
 }

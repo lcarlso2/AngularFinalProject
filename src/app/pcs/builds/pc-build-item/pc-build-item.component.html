@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-6">
-        <li class="list-group-item" [ngClass]="{'active': selectedPart === part}" (click)="listClick()">
-            {{part.model}} from {{part.brand}}-- {{part.description}}
+    <div class="col-7">
+        <li class="list-group-item" [ngClass]="{'active': selectedPC === pc}" (click)="listClick()">
+            Build name: {{pc.name}}
         </li>
     </div>
     <div class="col">

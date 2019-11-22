@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="partType">Part Type</label>
-                            <select class="btn btn-outline-secondary ml-3 mr-7 text-center"
+                            <select class="btn btn-outline-success ml-3 mr-7 text-center"
                                 [(ngModel)]="selectedPartType" (change)="selectedPartTypeChanged()">
                                 <option value="CPU">CPU</option>
                                 <option value="CPUcooler">CPU Cooler</option>
@@ -19,7 +19,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <button class="float-right btn btn-outline-secondary ml-3 mr-7"
+                            <button class="float-right btn btn-outline-primary"
                                 (click)="createPartClicked()">Create Part</button>
                         </div>
                     </div>

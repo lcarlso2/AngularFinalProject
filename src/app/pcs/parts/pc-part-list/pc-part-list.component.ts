@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './pc-part-list.component.html',
   styleUrls: ['./pc-part-list.component.css']
 })
-export class ListPcPartComponent implements OnInit {
+export class PCPartListComponent implements OnInit {
   selectedPartType: string;
 
   selectedPartTypeNumber: number;

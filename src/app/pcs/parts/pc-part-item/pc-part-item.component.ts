@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './pc-part-item.component.html',
   styleUrls: ['./pc-part-item.component.css']
 })
-export class PcPartItemComponent implements OnInit {
+export class PCPartItemComponent implements OnInit {
 
   @Input() part: Part;
 
