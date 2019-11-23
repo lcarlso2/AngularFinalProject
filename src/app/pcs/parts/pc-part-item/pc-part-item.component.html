@@ -1,17 +1,20 @@
 <div class="row">
     <div class="col-6">
         <li class="list-group-item" [ngClass]="{'active': selectedPart === part}" (click)="listClick()">
-            {{part.model}} from {{part.brand}}-- {{part.description}}
+            {{part.model}} from {{part.brand}} <br> {{part.description}}
         </li>
     </div>
     <div class="col">
         <div class="float-right">
             <div class="btn-group">
                 <button class="btn btn-outline-danger" *ngIf="showDelete" (click)="clickedDelete()">Delete</button>
-                <button class="btn btn-outline-danger" *ngIf="showConfirm"
-                    (click)="clickedConfirmDelete()">Confirm</button>
-                <button class="btn btn-outline-primary" *ngIf="showConfirm"
-                    (click)="clickedCancelDelete()">Cancel</button>
+                <label for="buttons" *ngIf="partInBuild">This part is in a build. Are you sure?</label>
+                <div class="buttons">
+                    <button class="btn btn-outline-danger" *ngIf="showConfirm" (click)="clickedConfirmDelete()"
+                        id="confirmation">Confirm</button>
+                    <button class="btn btn-outline-primary" *ngIf="showConfirm"
+                        (click)="clickedCancelDelete()">Cancel</button>
+                </div>
             </div>
         </div>
     </div>

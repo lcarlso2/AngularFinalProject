@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Part } from 'src/app/part-model/pc-part.model';
 import { PCService } from 'src/app/services/pc.service';
 import { Router } from '@angular/router';
+import { PC } from 'src/app/pc-model/pc.model';
 
 @Component({
   selector: 'app-pc-part-item',
@@ -18,8 +19,10 @@ export class PCPartItemComponent implements OnInit {
 
   showDelete: boolean;
   showConfirm: boolean;
+  partInBuild: boolean;
 
-  constructor(private service : PCService, private router: Router) {
+  constructor(private service: PCService, private router: Router) {
+    this.partInBuild = false;
     this.showDelete = true;
     this.showConfirm = false;
   }
@@ -36,8 +39,21 @@ export class PCPartItemComponent implements OnInit {
   }
 
   clickedDelete() {
-    this.showDelete = false;
-    this.showConfirm = true;
+    this.service.getPCS().subscribe(pcs => {
+      pcs.filter(currPC => {
+        var pc = new PC(currPC.id, currPC.name, currPC.gpuID, currPC.cpuID, currPC.cpuCoolerID,
+          currPC.motherboardID, currPC.memoryID, currPC.hardDriveID,
+          currPC.pcCaseID, currPC.powersupplyID, currPC.description)
+
+        if (pc.checkIfPCContainsPartIDNumber(this.part.id)) {
+          this.partInBuild = true;
+        }
+        this.showDelete = false;
+        this.showConfirm = true;
+      })
+    });
+
+
   }
 
   clickedConfirmDelete() {
@@ -45,12 +61,14 @@ export class PCPartItemComponent implements OnInit {
       () => {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['/parts', {type : this.part.type}]);
+        this.router.navigate(['/parts', { type: this.part.type }]);
       }
     );
   }
 
+
   clickedCancelDelete() {
+    this.partInBuild = false;
     this.showDelete = true;
     this.showConfirm = false;
   }

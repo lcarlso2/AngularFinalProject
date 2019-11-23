@@ -11,8 +11,7 @@
       "hardDriveID": 7,
       "pcCaseID": 8,
       "powersupplyID": 1,
-      "description": "This is my first build.",
-      "cpuCooleID": 4
+      "description": "This is my first build."
     },
     {
       "id": 2,
@@ -60,7 +59,7 @@
       "id": 3,
       "type": 0,
       "brand": "IntelTest",
-      "model": "i7-9700k",
+      "model": "i7-9700F",
       "description": "2.6 GHz 8-Core processor"
     },
     {
@@ -118,6 +117,27 @@
       "brand": "Intel",
       "model": "i5-9700F",
       "description": "6-Core"
+    },
+    {
+      "id": 12,
+      "type": 5,
+      "brand": "Z360",
+      "model": "MSI",
+      "description": "LGA1152 MOBO"
+    },
+    {
+      "id": 13,
+      "type": 4,
+      "brand": "Fast",
+      "model": "Super Fast",
+      "description": "Really Fast"
+    },
+    {
+      "id": 14,
+      "type": 7,
+      "brand": "Solid Gold",
+      "model": "Fancy",
+      "description": "Expensive"
     }
   ]
 }

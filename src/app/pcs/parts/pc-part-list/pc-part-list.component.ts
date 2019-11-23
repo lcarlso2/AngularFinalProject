@@ -43,9 +43,6 @@ export class PCPartListComponent implements OnInit {
 
   selectedPartTypeChanged() {
     this.selectedPartTypeNumber = Part.convertStringToEnumType(this.selectedPartType);
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/parts', { type: this.selectedPartTypeNumber }]);
   }
 
   createPartClicked() {

@@ -81,7 +81,6 @@ export class PcBuildEditComponent implements OnInit, OnChanges {
 
 
   initFormPC(){
-    console.log(this.pcToEdit)
     this.pcForm = this.formBuilder.group({
       id: new FormControl(
         {value : this.pcToEdit.id, disabled: true},

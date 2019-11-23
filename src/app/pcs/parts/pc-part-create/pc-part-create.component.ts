@@ -14,8 +14,6 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class PCPartCreateComponent implements OnInit {
 
-  selectedPart: string;
-
   partForm: FormGroup;
 
   @Output() partCreated: boolean;
