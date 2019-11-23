@@ -1,1 +1,191 @@
-<p>pc-build-edit works!</p>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Edit Build!</h1>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="pcForm" (ngSubmit)="onSubmit()">
+                <div class="row ">
+                    <div class="col-4 offset-md-4">
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="id">Build ID</label>
+                                <input type="text" formControlName="id" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && fields.id.errors }" />
+                                <div *ngIf="fields.id.invalid && fields.id.touched">
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.id.errors.required">ID is
+                                        required
+                                    </small>
+                                    <small id="helpBlock" class="form-text" *ngIf="fields.id.errors.idTaken">ID is Taken
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-md-3">
+                        <div class="form-group">
+                            <label for="name">PC Build Name</label>
+                            <input type="text" formControlName="name" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.name.errors }" />
+                            <div *ngIf="fields.name.invalid && fields.name.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.name.errors.required">PC Build
+                                    name is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="cpu">CPU</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="cpu" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.cpu.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:cpuType" [value]="part.id">
+                                    {{part.brand}}
+                                    {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.cpu.invalid && fields.cpu.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.cpu.errors.required">
+                                    CPU is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="cpuCooler">CPU Cooler</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="cpuCooler" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.cpuCooler.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:cpuCoolerType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.cpuCooler.invalid && fields.cpuCooler.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.cpuCooler.errors.required">
+                                    CPU Cooler is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="gpu">GPU</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="gpu" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.gpu.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:gpuType" [value]="part.id">{{part.brand}}
+                                    {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.gpu.invalid && fields.gpu.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.gpu.errors.required">
+                                    GPU is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="memory">Memory</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="memory" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.memory.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:memoryType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.memory.invalid && fields.memory.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.memory.errors.required">
+                                    Memory is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="powersupply">Power Supply</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="powersupply" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.powersupply.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:powerSupplyType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.powersupply.invalid && fields.powersupply.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.powersupply.errors.required">
+                                    Power Supply is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="motherboard">Motherboard</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="motherboard" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.memory.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:motherboardType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.motherboard.invalid && fields.motherboard.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.motherboard.errors.required">
+                                    Motherboard is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="case">Case</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="case" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.memory.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:caseType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.case.invalid && fields.case.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.case.errors.required">
+                                    Case is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="harddrive">Hard Drive</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="harddrive" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.harddrive.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:harddriveType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.harddrive.invalid && fields.harddrive.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.harddrive.errors.required">
+                                    Hard Drive is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-md-3">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" formControlName="description" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.description.errors }" />
+                            <div *ngIf="fields.description.invalid && fields.description.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.description.errors.required">PC Build
+                                    Description is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" [disabled]="!pcForm.valid">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
