@@ -38,6 +38,13 @@ export class PcBuildItemComponent implements OnInit {
   }
 
   clickedConfirmDelete() {
+    this.service.deletePC(this.pc).subscribe(
+      () => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/builds']);
+      }
+    );
     
   }
 

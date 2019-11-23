@@ -51,6 +51,10 @@ export class PCService {
         return this.http.post(this.urlForPCs, pc).pipe(tap(data => console.log('PC Created')), catchError(this.handleError));
     }
 
+    deletePC(pc: PC){
+        return this.http.delete<void>(this.urlForPCs + `/${pc.id}`).pipe(tap(data => console.log(`PC with id ${pc.id} deleted`)), catchError(this.handleError));
+    }
+
     checkIfIdExistsForPC(id: number) {
         return timer(5).pipe(switchMap(() => {
             return this.http.get<any>(this.urlForPCs + `/${id}`).toPromise().then();
