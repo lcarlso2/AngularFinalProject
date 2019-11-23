@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="cpu">CPU</label>
                             <select class="col-3 btn ml-3 mr-7" formControlName="cpu" class="form-control"
@@ -48,13 +48,13 @@
                                     {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.cpu.invalid && fields.cpu.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.cpu.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.cpu.errors.required">
                                     CPU is required
                                 </small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-7">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="cpuCooler">CPU Cooler</label>
                             <select class="col-3 btn ml-3 mr-7" formControlName="cpuCooler" class="form-control"
@@ -63,7 +63,7 @@
                                     {{part.brand}} {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.cpuCooler.invalid && fields.cpuCooler.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.cpuCooler.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.cpuCooler.errors.required">
                                     CPU Cooler is required
                                 </small>
                             </div>
@@ -80,7 +80,7 @@
                                     {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.gpu.invalid && fields.gpu.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.gpu.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.gpu.errors.required">
                                     GPU is required
                                 </small>
                             </div>
@@ -95,7 +95,7 @@
                                     {{part.brand}} {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.memory.invalid && fields.memory.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.memory.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.memory.errors.required">
                                     Memory is required
                                 </small>
                             </div>
@@ -112,7 +112,7 @@
                                     {{part.brand}} {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.powersupply.invalid && fields.powersupply.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.powersupply.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.powersupply.errors.required">
                                     Power Supply is required
                                 </small>
                             </div>
@@ -127,7 +127,7 @@
                                     {{part.brand}} {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.motherboard.invalid && fields.motherboard.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.motherboard.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.motherboard.errors.required">
                                     Motherboard is required
                                 </small>
                             </div>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 offset-md-3">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="case">Case</label>
                             <select class="col-3 btn ml-3 mr-7" formControlName="case" class="form-control"
@@ -144,8 +144,37 @@
                                     {{part.brand}} {{part.model}}</option>
                             </select>
                             <div *ngIf="fields.case.invalid && fields.case.touched">
-                                <small id="helpBlock" class="form-text" *ngIf="fields.case.errors.required">Part
+                                <small id="helpBlock" class="form-text" *ngIf="fields.case.errors.required">
                                     Case is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="harddrive">Hard Drive</label>
+                            <select class="col-3 btn ml-3 mr-7" formControlName="harddrive" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.harddrive.errors}">
+                                <option *ngFor="let part of parts | partTypePipe:harddriveType" [value]="part.id">
+                                    {{part.brand}} {{part.model}}</option>
+                            </select>
+                            <div *ngIf="fields.harddrive.invalid && fields.harddrive.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.harddrive.errors.required">
+                                    Hard Drive is required
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-md-3">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" formControlName="description" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fields.description.errors }" />
+                            <div *ngIf="fields.description.invalid && fields.description.touched">
+                                <small id="helpBlock" class="form-text" *ngIf="fields.description.errors.required">PC Build
+                                    Description is required
                                 </small>
                             </div>
                         </div>

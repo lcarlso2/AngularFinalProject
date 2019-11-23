@@ -87,6 +87,14 @@ export class PcBuildCreateComponent implements OnInit {
       case: new FormControl(
         '',
         [Validators.required]
+      ),
+      description: new FormControl(
+        '',
+        [Validators.required]
+      ),
+      harddrive: new FormControl(
+        '',
+        [Validators.required]
       )
     })
   }
@@ -96,15 +104,45 @@ export class PcBuildCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    var cpu = this.parts.filter(curr => {
-    curr.id === +this.fields.cpu.value;
-    console.log(typeof(curr.id))
-    });
-    console.log(typeof(this.fields.cpu.value));
-    console.log(typeof(+this.fields.cpu.value));
-    console.log(cpu)
+    var cpu = this.parts.find(curr =>
+      curr.id === +this.fields.cpu.value
+    );
+    var cpuCooler = this.parts.find(curr =>
+      curr.id === +this.fields.cpuCooler.value
+    );
+    var gpu = this.parts.find(curr =>
+      curr.id === +this.fields.gpu.value
+    );
+    var memory = this.parts.find(curr =>
+      curr.id === +this.fields.memory.value
+    );
+    var powerSupply = this.parts.find(curr =>
+      curr.id === +this.fields.powersupply.value
+    );
+    var motherboard = this.parts.find(curr =>
+      curr.id === +this.fields.motherboard.value
+    );
+    var pcCase = this.parts.find(curr =>
+      curr.id === +this.fields.case.value
+    );
 
-    console.log((3 === +'3'))
+    var harddrive = this.parts.find(curr =>
+      curr.id === +this.fields.harddrive.value
+    );
+
+    var pc = new PC(+this.fields.id.value,
+       this.fields.name.value, gpu, cpu, 
+       cpuCooler, motherboard, 
+       memory, harddrive, pcCase, 
+       powerSupply, this.fields.description.value)
+
+    this.service.createPC(pc).subscribe(
+      () => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/builds']);
+      }
+    );
 
   }
 
