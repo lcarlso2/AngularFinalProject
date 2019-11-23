@@ -58,37 +58,11 @@ export class PcBuildEditComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    var cpu = this.parts.find(curr =>
-      curr.id === +this.fields.cpu.value
-    );
-    var cpuCooler = this.parts.find(curr =>
-      curr.id === +this.fields.cpuCooler.value
-    );
-    var gpu = this.parts.find(curr =>
-      curr.id === +this.fields.gpu.value
-    );
-    var memory = this.parts.find(curr =>
-      curr.id === +this.fields.memory.value
-    );
-    var powerSupply = this.parts.find(curr =>
-      curr.id === +this.fields.powersupply.value
-    );
-    var motherboard = this.parts.find(curr =>
-      curr.id === +this.fields.motherboard.value
-    );
-    var pcCase = this.parts.find(curr =>
-      curr.id === +this.fields.case.value
-    );
-
-    var harddrive = this.parts.find(curr =>
-      curr.id === +this.fields.harddrive.value
-    );
-
     var pc = new PC(+this.fields.id.value,
-       this.fields.name.value, gpu, cpu, 
-       cpuCooler, motherboard, 
-       memory, harddrive, pcCase, 
-       powerSupply, this.fields.description.value)
+      this.fields.name.value, +this.fields.gpu.value, +this.fields.cpu.value, 
+      +this.fields.cpuCooler.value, +this.fields.motherboard.value, 
+      +this.fields.memory.value, +this.fields.harddrive.value, +this.fields.case.value, 
+      +this.fields.powersupply.value, this.fields.description.value)
 
     this.service.editPC(pc).subscribe(
       () => {
@@ -118,31 +92,31 @@ export class PcBuildEditComponent implements OnInit, OnChanges {
         [Validators.required]
       ),
       cpu: new FormControl(
-        this.pcToEdit.cpu.id,
+        this.pcToEdit.cpuID,
         [Validators.required]
       ),
       cpuCooler: new FormControl(
-        this.pcToEdit.cpuCooler.id,
+        this.pcToEdit.cpuCoolerID,
         [Validators.required]
       ),
       gpu: new FormControl(
-        this.pcToEdit.gpu.id,
+        this.pcToEdit.gpuID,
         [Validators.required]
       ),
       memory: new FormControl(
-        this.pcToEdit.memory.id,
+        this.pcToEdit.memoryID,
         [Validators.required]
       ),
       powersupply: new FormControl(
-        this.pcToEdit.powersupply.id,
+        this.pcToEdit.powersupplyID,
         [Validators.required]
       ),
       motherboard: new FormControl(
-        this.pcToEdit.motherboard.id,
+        this.pcToEdit.motherboardID,
         [Validators.required]
       ),
       case: new FormControl(
-        this.pcToEdit.pcCase.id,
+        this.pcToEdit.pcCaseID,
         [Validators.required]
       ),
       description: new FormControl(
@@ -150,7 +124,7 @@ export class PcBuildEditComponent implements OnInit, OnChanges {
         [Validators.required]
       ),
       harddrive: new FormControl(
-        this.pcToEdit.hardDrive.id,
+        this.pcToEdit.hardDriveID,
         [Validators.required]
       )
     })

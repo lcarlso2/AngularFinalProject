@@ -19,7 +19,7 @@ export class PcBuildItemComponent implements OnInit {
   showDelete: boolean;
   showConfirm: boolean;
 
-  constructor(private service : PCService, private router: Router) {
+  constructor(private service: PCService, private router: Router) {
     this.showDelete = true;
     this.showConfirm = false;
   }
@@ -45,7 +45,7 @@ export class PcBuildItemComponent implements OnInit {
         this.router.navigate(['/builds']);
       }
     );
-    
+
   }
 
   clickedCancelDelete() {

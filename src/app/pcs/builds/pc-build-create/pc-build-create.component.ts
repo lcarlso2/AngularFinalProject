@@ -104,37 +104,11 @@ export class PcBuildCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    var cpu = this.parts.find(curr =>
-      curr.id === +this.fields.cpu.value
-    );
-    var cpuCooler = this.parts.find(curr =>
-      curr.id === +this.fields.cpuCooler.value
-    );
-    var gpu = this.parts.find(curr =>
-      curr.id === +this.fields.gpu.value
-    );
-    var memory = this.parts.find(curr =>
-      curr.id === +this.fields.memory.value
-    );
-    var powerSupply = this.parts.find(curr =>
-      curr.id === +this.fields.powersupply.value
-    );
-    var motherboard = this.parts.find(curr =>
-      curr.id === +this.fields.motherboard.value
-    );
-    var pcCase = this.parts.find(curr =>
-      curr.id === +this.fields.case.value
-    );
-
-    var harddrive = this.parts.find(curr =>
-      curr.id === +this.fields.harddrive.value
-    );
-
     var pc = new PC(+this.fields.id.value,
-       this.fields.name.value, gpu, cpu, 
-       cpuCooler, motherboard, 
-       memory, harddrive, pcCase, 
-       powerSupply, this.fields.description.value)
+       this.fields.name.value, +this.fields.gpu.value, +this.fields.cpu.value, 
+       +this.fields.cpuCooler.value, +this.fields.motherboard.value, 
+       +this.fields.memory.value, +this.fields.harddrive.value, +this.fields.case.value, 
+       +this.fields.powersupply.value, this.fields.description.value)
 
     this.service.createPC(pc).subscribe(
       () => {
