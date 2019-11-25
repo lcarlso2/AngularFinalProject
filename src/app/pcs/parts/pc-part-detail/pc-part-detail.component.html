@@ -15,9 +15,9 @@
                     <button class="btn btn-outline-danger" *ngIf="showDelete" (click)="clickedDelete()">Delete</button>
                     <label for="buttons" *ngIf="partInBuild">This part is in a build. Are you sure?</label>
                     <div class="buttons">
-                        <button class="btn btn-outline-danger" *ngIf="showConfirm" (click)="clickedConfirmDelete()"
+                        <button class="btn btn-outline-danger btn-block" *ngIf="showConfirm" (click)="clickedConfirmDelete()"
                             id="confirmation">Confirm</button>
-                        <button class="btn btn-outline-primary" *ngIf="showConfirm"
+                        <button class="btn btn-outline-primary btn-block" *ngIf="showConfirm"
                             (click)="clickedCancelDelete()">Cancel</button>
                     </div>
                 </div>

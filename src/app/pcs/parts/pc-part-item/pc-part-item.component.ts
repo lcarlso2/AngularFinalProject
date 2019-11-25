@@ -18,7 +18,7 @@ export class PCPartItemComponent implements OnInit {
   @Output() selectedItemChanged: EventEmitter<Part> = new EventEmitter<Part>();
 
 
-  constructor(private service: PCService, private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class PCPartItemComponent implements OnInit {
     this.selectedItemChanged.emit(this.part);
   }
 
- 
+
 
 
 

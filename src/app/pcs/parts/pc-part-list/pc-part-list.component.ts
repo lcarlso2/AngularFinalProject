@@ -46,6 +46,9 @@ export class PCPartListComponent implements OnInit {
   }
 
   selectedPartTypeChanged() {
+    this.createPart = false;
+    this.editClicked = false;
+    this.selectedPart = null;
     this.selectedPartTypeNumber = Part.convertStringToEnumType(this.selectedPartType);
   }
 

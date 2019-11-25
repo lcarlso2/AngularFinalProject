@@ -12,7 +12,7 @@
             Memory: {{memory?.model}} from {{memory?.brand}}<br>
             HardDrive: {{harddrive?.model}} from {{harddrive?.brand}}<br>
             Case: {{pcCase?.model}} from {{pcCase?.brand}}<br>
-            Power Supply: {{powersupply?.model}} from {{powersupply?.brand}} <br> <br>
+            Power Supply: {{powersupply?.model}} from {{powersupply?.brand}} <br> <br><br> <br>
             <div class="row">
                 <div class="col">
                     <div class="btn-group">
@@ -24,10 +24,13 @@
                     <div class="btn-group">
                         <button class="btn btn-outline-danger" *ngIf="showDelete"
                             (click)="clickedDelete()">Delete</button>
-                        <button class="btn btn-outline-danger" *ngIf="showConfirm"
-                            (click)="clickedConfirmDelete()">Confirm</button>
-                        <button class="btn btn-outline-primary" *ngIf="showConfirm"
-                            (click)="clickedCancelDelete()">Cancel</button>
+                        <label for="buttons" *ngIf="showConfirm">Are you sure?</label>
+                        <div class="buttons">
+                            <button class="btn btn-outline-danger btn-block" *ngIf="showConfirm"
+                                (click)="clickedConfirmDelete()">Confirm</button>
+                            <button class="btn btn-outline-primary btn-block" *ngIf="showConfirm"
+                                (click)="clickedCancelDelete()">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
