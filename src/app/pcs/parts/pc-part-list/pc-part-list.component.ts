@@ -21,9 +21,12 @@ export class PCPartListComponent implements OnInit {
 
   createPart: boolean;
 
+  editClicked: boolean;
+
 
   constructor(private service: PCService, private router: Router, private route: ActivatedRoute) {
     this.createPart = false;
+    this.editClicked = false;
     this.parts = [];
   }
 
@@ -39,6 +42,7 @@ export class PCPartListComponent implements OnInit {
 
   onChildSelectedPartChanged(part: Part) {
     this.selectedPart = part;
+    this.editClicked = false;
   }
 
   selectedPartTypeChanged() {
@@ -47,7 +51,12 @@ export class PCPartListComponent implements OnInit {
 
   createPartClicked() {
     this.selectedPart = null;
+    this.editClicked = false;
     this.createPart = true;
+  }
+
+  childEditClicked(){
+    this.editClicked = true;
   }
 
 

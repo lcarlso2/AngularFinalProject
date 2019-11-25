@@ -35,7 +35,9 @@
             </div>
         </div>
         <div class="col-6">
-            <app-pc-part-edit [partToEdit]="selectedPart" *ngIf="selectedPart != null"></app-pc-part-edit>
+            <app-pc-part-detail [part]="selectedPart" (editClicked)='childEditClicked($event)' *ngIf="selectedPart != null && editClicked == false"></app-pc-part-detail>
+
+            <app-pc-part-edit [partToEdit]="selectedPart" *ngIf="editClicked"></app-pc-part-edit>
             <app-pc-part-create *ngIf="createPart && selectedPart === null"></app-pc-part-create>
         </div>
     </div>

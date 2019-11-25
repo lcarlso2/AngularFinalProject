@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header text-center">Part ID: {{part?.id}}</div>
+    <div class="card-body text-center">
+        A {{part?.model}} {{type}} from {{part?.brand}}
+        <br>Description: {{part?.description}} <br> <br>
+        <div class="row">
+            <div class="col">
+                <div class="btn-group">
+                    <button class="btn btn-outline-primary" (click)='editClickEvent()'>Edit
+                        Part</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="btn-group">
+                    <button class="btn btn-outline-danger" *ngIf="showDelete" (click)="clickedDelete()">Delete</button>
+                    <label for="buttons" *ngIf="partInBuild">This part is in a build. Are you sure?</label>
+                    <div class="buttons">
+                        <button class="btn btn-outline-danger" *ngIf="showConfirm" (click)="clickedConfirmDelete()"
+                            id="confirmation">Confirm</button>
+                        <button class="btn btn-outline-primary" *ngIf="showConfirm"
+                            (click)="clickedCancelDelete()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

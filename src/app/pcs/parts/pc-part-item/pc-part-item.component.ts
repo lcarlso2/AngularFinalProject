@@ -17,14 +17,8 @@ export class PCPartItemComponent implements OnInit {
 
   @Output() selectedItemChanged: EventEmitter<Part> = new EventEmitter<Part>();
 
-  showDelete: boolean;
-  showConfirm: boolean;
-  partInBuild: boolean;
 
   constructor(private service: PCService, private router: Router) {
-    this.partInBuild = false;
-    this.showDelete = true;
-    this.showConfirm = false;
   }
 
   ngOnInit() {
@@ -38,39 +32,10 @@ export class PCPartItemComponent implements OnInit {
     this.selectedItemChanged.emit(this.part);
   }
 
-  clickedDelete() {
-    this.service.getPCS().subscribe(pcs => {
-      pcs.filter(currPC => {
-        var pc = new PC(currPC.id, currPC.name, currPC.gpuID, currPC.cpuID, currPC.cpuCoolerID,
-          currPC.motherboardID, currPC.memoryID, currPC.hardDriveID,
-          currPC.pcCaseID, currPC.powersupplyID, currPC.description)
-
-        if (pc.checkIfPCContainsPartIDNumber(this.part.id)) {
-          this.partInBuild = true;
-        }
-        this.showDelete = false;
-        this.showConfirm = true;
-      })
-    });
+ 
 
 
-  }
-
-  clickedConfirmDelete() {
-    this.service.deletePart(this.part).subscribe(
-      () => {
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['/parts', { type: this.part.type }]);
-      }
-    );
-  }
 
 
-  clickedCancelDelete() {
-    this.partInBuild = false;
-    this.showDelete = true;
-    this.showConfirm = false;
-  }
 
 }

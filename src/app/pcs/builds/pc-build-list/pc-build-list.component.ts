@@ -18,8 +18,12 @@ export class PCBuildListComponent implements OnInit {
   selectedPC: PC;
 
   createPC: boolean;
+
+  editClicked: boolean;
   
   constructor(private service: PCService) {
+    this.editClicked = false;
+    this.createPC = false;
   }
 
   ngOnInit() {
@@ -32,12 +36,18 @@ export class PCBuildListComponent implements OnInit {
 
   
   onChildSelectedPCChanged(pc: PC) {
+    this.editClicked = false;
     this.selectedPC = pc;
   }
 
   createPCClicked() {
     this.selectedPC = null;
+    this.editClicked = false;
     this.createPC = true;
+  }
+
+  childEditClicked() {
+    this.editClicked = true;
   }
 
 }

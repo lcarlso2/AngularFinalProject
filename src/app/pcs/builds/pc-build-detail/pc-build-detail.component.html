@@ -1,10 +1,39 @@
 <div class="container">
     <div class="card">
-        <div class="card-header">
-            Details For PC
+        <div class="card-header text-center">
+            PC Name: {{pc.name}}
         </div>
-        <div class="card-body">
-            
+        <div class="card-body text-center">
+            Description: {{pc.description}} <br>
+            CPU: {{cpu?.model}} from {{cpu?.brand}} <br>
+            CPU Cooler: {{cpuCooler?.model}} from {{cpuCooler?.brand}}<br>
+            GPU: {{gpu?.model}} from {{gpu?.brand}}<br>
+            Motherboard: {{motherboard?.model}} from {{motherboard?.brand}}<br>
+            Memory: {{memory?.model}} from {{memory?.brand}}<br>
+            HardDrive: {{harddrive?.model}} from {{harddrive?.brand}}<br>
+            Case: {{pcCase?.model}} from {{pcCase?.brand}}<br>
+            Power Supply: {{powersupply?.model}} from {{powersupply?.brand}} <br> <br>
+            <div class="row">
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary" (click)='editClickEvent()'>Edit
+                            PC</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-danger" *ngIf="showDelete"
+                            (click)="clickedDelete()">Delete</button>
+                        <button class="btn btn-outline-danger" *ngIf="showConfirm"
+                            (click)="clickedConfirmDelete()">Confirm</button>
+                        <button class="btn btn-outline-primary" *ngIf="showConfirm"
+                            (click)="clickedCancelDelete()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            ID: {{pc.id}}
         </div>
     </div>
 </div>

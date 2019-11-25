@@ -23,7 +23,9 @@
             </div>
         </div>
         <div class="col-6">
-                <app-pc-build-edit [pcToEdit]="selectedPC" *ngIf="selectedPC != null"></app-pc-build-edit>
+                <app-pc-build-detail [pc]="selectedPC" (editClicked)='childEditClicked($event)' *ngIf="selectedPC != null && editClicked == false"></app-pc-build-detail>
+
+                <app-pc-build-edit [pcToEdit]="selectedPC" *ngIf="editClicked"></app-pc-build-edit>
                 <app-pc-build-create *ngIf="createPC && selectedPC === null"></app-pc-build-create>
         </div>
     </div>

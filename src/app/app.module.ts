@@ -20,6 +20,7 @@ import { PcBuildItemComponent } from './pcs/builds/pc-build-item/pc-build-item.c
 import { PcBuildEditComponent } from './pcs/builds/pc-build-edit/pc-build-edit.component';
 import { PcBuildCreateComponent } from './pcs/builds/pc-build-create/pc-build-create.component';
 import { PcBuildDetailComponent } from './pcs/builds/pc-build-detail/pc-build-detail.component';
+import { PcPartDetailComponent } from './pcs/parts/pc-part-detail/pc-part-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PcBuildDetailComponent } from './pcs/builds/pc-build-detail/pc-build-de
     PcBuildItemComponent,
     PcBuildEditComponent,
     PcBuildCreateComponent,
-    PcBuildDetailComponent
+    PcBuildDetailComponent,
+    PcPartDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -16,12 +16,9 @@ export class PcBuildItemComponent implements OnInit {
 
   @Output() selectedItemChanged: EventEmitter<PC> = new EventEmitter<PC>();
 
-  showDelete: boolean;
-  showConfirm: boolean;
 
-  constructor(private service: PCService, private router: Router) {
-    this.showDelete = true;
-    this.showConfirm = false;
+  constructor(private service: PCService) {
+
   }
 
   ngOnInit() {
@@ -32,25 +29,6 @@ export class PcBuildItemComponent implements OnInit {
     this.selectedItemChanged.emit(this.pc);
   }
 
-  clickedDelete() {
-    this.showDelete = false;
-    this.showConfirm = true;
-  }
-
-  clickedConfirmDelete() {
-    this.service.deletePC(this.pc).subscribe(
-      () => {
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['/builds']);
-      }
-    );
-
-  }
-
-  clickedCancelDelete() {
-    this.showDelete = true;
-    this.showConfirm = false;
-  }
+ 
 
 }
